@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="filters">
+  <form method="get">
+    <label>Min fit score
+      <input type="number" name="fit_score" min="0" max="5" value="{{ filters.fit_score }}">
+    </label>
+    <label>Source
+      <select name="source">
+        <option value="">All</option>
+        {% for src in sources %}
+          <option value="{{ src }}" {% if filters.source == src %}selected{% endif %}>{{ src }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Deadline from
+      <input type="date" name="deadline_from" value="{{ filters.deadline_from }}">
+    </label>
+    <label>Deadline to
+      <input type="date" name="deadline_to" value="{{ filters.deadline_to }}">
+    </label>
+    <label>Search
+      <input type="text" name="search" value="{{ filters.search }}">
+    </label>
+    <button type="submit">Apply</button>
+  </form>
+</section>
+
+<section>
+  <h2>Opportunities</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Source</th>
+        <th>Deadline</th>
+        <th>Fit Score</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for opp in opportunities %}
+      <tr>
+        <td><a href="/opportunity/{{ opp['opportunity_id'] }}">{{ opp['title'] }}</a></td>
+        <td>{{ opp['source'] }}</td>
+        <td>{{ opp['deadline'] }}</td>
+        <td>{{ opp['fit_score'] }}</td>
+        <td>{{ opp['notes'] }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="5">NO ELIGIBLE GRANTS FOUND THIS CYCLE</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
