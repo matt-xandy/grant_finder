@@ -1,0 +1,68 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f6f7fb;
+  color: #1f2933;
+}
+header {
+  background: #123a64;
+  color: #fff;
+  padding: 1rem 0;
+}
+header h1 {
+  margin: 0;
+}
+header nav a {
+  color: #fff;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+.container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+main {
+  padding: 1.5rem 0 3rem;
+}
+section {
+  margin-bottom: 2rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+table th, table td {
+  border: 1px solid #d9e2ec;
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.filters form, .run-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+button, .button {
+  background: #2f74c0;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+button:hover, .button:hover {
+  background: #255d9a;
+}
+pre {
+  white-space: pre-wrap;
+  background: #f0f4f8;
+  padding: 1rem;
+}

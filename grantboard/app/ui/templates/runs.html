@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="run-actions">
+  <form method="post" action="/admin/run">
+    <label>Admin token
+      <input type="password" name="token" required>
+    </label>
+    <button type="submit">Run now</button>
+  </form>
+  <a class="button" href="/runs/last.csv">Download CSV of last run</a>
+</section>
+
+<section>
+  <h2>Run History</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Started</th>
+        <th>Finished</th>
+        <th>Candidates</th>
+        <th>Filtered In</th>
+        <th>Added</th>
+        <th>Errors</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for run in runs %}
+      <tr>
+        <td>{{ run['started_utc'] }}</td>
+        <td>{{ run['finished_utc'] }}</td>
+        <td>{{ run['n_candidates'] }}</td>
+        <td>{{ run['n_filtered_in'] }}</td>
+        <td>{{ run['n_added'] }}</td>
+        <td>{{ run['errors'] }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="6">No runs yet</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

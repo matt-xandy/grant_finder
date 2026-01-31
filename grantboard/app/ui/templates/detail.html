@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+  <h2>{{ opportunity['title'] }}</h2>
+  <p><strong>Source:</strong> {{ opportunity['source'] }}</p>
+  <p><strong>Link:</strong> <a href="{{ opportunity['link'] }}">{{ opportunity['link'] }}</a></p>
+  <p><strong>Deadline:</strong> {{ opportunity['deadline'] }}</p>
+  <p><strong>Amount:</strong> {{ opportunity['amount'] }}</p>
+  <p><strong>Focus Area:</strong> {{ opportunity['focus_area'] }}</p>
+  <p><strong>Eligibility:</strong> {{ opportunity['eligibility_criteria'] }}</p>
+  <p><strong>Fit Score:</strong> {{ opportunity['fit_score'] }}</p>
+  <p><strong>Notes:</strong> {{ opportunity['notes'] }}</p>
+
+  <h3>Evidence Snippets</h3>
+  <ul>
+    {% for snippet in evidence_snippets %}
+      <li>{{ snippet }}</li>
+    {% else %}
+      <li>No evidence snippets captured.</li>
+    {% endfor %}
+  </ul>
+
+  <details>
+    <summary>Raw Text</summary>
+    <pre>{{ opportunity['raw_text'] }}</pre>
+  </details>
+</section>
+{% endblock %}
